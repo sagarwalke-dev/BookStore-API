@@ -6,7 +6,7 @@ let db = require('../services/db');
 let getAllBooks = async () => {
     try {
         console.log('Book data retrived successfully...');
-        return await bookModel.find().sort( { bookName: 1 } );
+        return await bookModel.find();
     }
     catch (err) {
         console.log(`ERROR: ${err}`);
@@ -49,4 +49,22 @@ let deleteBookById=async(id)=>{
     }
 }
 
-module.exports={getAllBooks,addBook,getBookById,updateBookQtyById,deleteBookById};
+//display book list by bookQty ascending order
+let getBookByQtyAsc= async()=>{
+    try {
+        return await bookModel.find().sort( { bookQty: 1 } );
+    } catch (err) {
+        console.log(`ERROR: ${err}`);
+    }
+}
+
+//display book list by bookName ascending order
+let getBookByNameAsc= async()=>{
+    try {
+        return await bookModel.find().sort( { bookName: 1 } );
+    } catch (err) {
+        console.log(`ERROR: ${err}`);
+    }
+}
+
+module.exports={getAllBooks,addBook,getBookById,updateBookQtyById,deleteBookById,getBookByQtyAsc,getBookByNameAsc};

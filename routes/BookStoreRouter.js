@@ -56,6 +56,28 @@ router.get('/deleteBookById',function(req,res){
     });
 });
 
+//getBookByQtyAsc
+router.get('/getBookByQtyAsc',function(req,res){
+    BookStore.getBookByQtyAsc().then(data=>{
+        console.log(`Book data retirved bookQty by ascending order`);
+        res.json(data);
+    }).catch(err=>{
+        console.log(`Failed retirving book data by ascending order with qty ${err}`);
+        res.json({'status':err});
+    });
+});
+
+//getBookByNameAsc
+router.get('/getBookByNameAsc',function(req,res){
+    BookStore.getBookByNameAsc().then(data=>{
+        console.log(`Book data retirved bookName by ascending order`);
+        res.json(data);
+    }).catch(err=>{
+        console.log(`Failed retirving book data by ascending order with name ${err}`);
+        res.json({'status':err});
+    });
+});
+
 //error handler
 router.get('*',function(req,res){
     res.json({'status':`Invalid endpoint ${req.url}`});
