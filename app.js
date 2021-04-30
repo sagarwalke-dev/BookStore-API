@@ -10,6 +10,6 @@ app.use(express.static(path.join(__dirname,'./public/')));
 app.use('',router);
 
 //configure port for express
-app.listen(config.get('app.port') || process.env.PORT, ()=>{
+app.listen(process.env.PORT || config.get('app.port'), ()=>{
     console.log(`server started on http://localhost:${config.get('app.port')}`);
 });
